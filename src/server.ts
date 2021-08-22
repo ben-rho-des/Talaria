@@ -1,9 +1,23 @@
-import { app } from "./app";
-import chalk from "chalk";
+import { initExpressServer } from './app';
+import chalk from 'chalk';
 
-const port = process.env.PORT || 3000;
 const log = console.log;
 
-app.listen(port, () =>
-  log(chalk.yellow(`Example app listening at http://localhost:${port}`))
-);
+const startServer = async (): Promise<void> => {
+  try {
+    await initExpressServer;
+  } catch (error) {
+    log(chalk.red(error));
+    process.exit(1);
+  }
+};
+
+const handleException = function handleException(error: Error): void {
+  log(chalk.red(error));
+
+  process.exit(1);
+};
+
+process.on('uncaughtException', handleException);
+
+startServer();

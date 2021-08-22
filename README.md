@@ -37,5 +37,5 @@ docker stop $(docker ps -a -q)
 
 ## todos
 
-dockerize
+add better logging
 tests

@@ -24,48 +24,34 @@
 							"Happy",
 							"Sad"
 						]
-					},
-					"phoneNumbers": {
-						"items": {
-							"type": "string"
-						},
-						"type": "array"
 					}
 				},
 				"required": [
 					"id",
 					"email",
-					"name",
-					"phoneNumbers"
+					"name"
 				],
 				"type": "object",
 				"additionalProperties": false
 			},
-			"Pick_User.email-or-name-or-phoneNumbers_": {
+			"Pick_User.email-or-name_": {
 				"properties": {
 					"email": {
 						"type": "string"
 					},
 					"name": {
 						"type": "string"
-					},
-					"phoneNumbers": {
-						"items": {
-							"type": "string"
-						},
-						"type": "array"
 					}
 				},
 				"required": [
 					"email",
-					"name",
-					"phoneNumbers"
+					"name"
 				],
 				"type": "object",
 				"description": "From T, pick a set of properties whose keys are in the union K"
 			},
 			"UserCreationParams": {
-				"$ref": "#/components/schemas/Pick_User.email-or-name-or-phoneNumbers_"
+				"$ref": "#/components/schemas/Pick_User.email-or-name_"
 			}
 		},
 		"securitySchemes": {}
@@ -73,7 +59,7 @@
 	"info": {
 		"title": "talaria",
 		"version": "1.0.0",
-		"description": "nodejs ts microservice",
+		"description": "nodejs ts microservice quickstarter",
 		"license": {
 			"name": "MIT"
 		},
