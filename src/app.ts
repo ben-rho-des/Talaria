@@ -4,13 +4,12 @@ import express, { Response as ExResponse, Request as ExRequest } from 'express';
 import swaggerUi from 'swagger-ui-express';
 import { RegisterRoutes } from '../build/routes';
 
-import sequelizeConnection from './database/database';
+// import sequelizeConnection from './database/database';
 import * as http from 'http';
 import * as https from 'https';
 import { AddressInfo } from 'net';
 import { safeGet } from './utils/tools';
 import { ErrorResponse, NotFound } from './middleware/error';
-import { Application } from 'express-serve-static-core';
 
 const log = console.log;
 export const app = express();
@@ -19,11 +18,12 @@ const SERVER_PORT = process.env.PORT || 3000;
 
 export const initExpressServer = async (opts: https.ServerOptions): Promise<http.Server> => {
   try {
-    try {
-      await sequelizeConnection.authenticate();
-    } catch (error) {
-      throw new Error(error);
-    }
+    // try {
+    //   await sequelizeConnection.authenticate();
+    // } catch (error) {
+    //   log(chalk.red(error));
+    //   throw new Error(error);
+    // }
     const server: http.Server = await initServer(opts);
 
     log(chalk.yellow('Server started!'));
@@ -35,9 +35,10 @@ export const initExpressServer = async (opts: https.ServerOptions): Promise<http
   }
 };
 
-export const initExpressApplication = async (): Promise<Application> => {
+export const initExpressApplication = async (): Promise<any> => {
   // print env/cfg
 
+  log(chalk.yellow('starting app'));
   const app: any = express();
 
   app.use(bodyParser.urlencoded({ extended: true }));

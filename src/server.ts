@@ -5,7 +5,7 @@ const log = console.log;
 
 const startServer = async (): Promise<void> => {
   try {
-    await initExpressServer;
+    await initExpressServer({});
   } catch (error) {
     log(chalk.red(error));
     process.exit(1);
