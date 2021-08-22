@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  db:
+    image: postgres
+    ports:
+      - '5432:5432'
+    env_file:
+      - database.env
+    volumes:
+      - talaria-db:/var/lib/postgresql/data
+  talaria:
+    build:
+      context: .
+    env_file:
+      - database.env
+      - local.env
+    depends_on:
+      - db
+    ports:
+      - '3000:3000'
+
+volumes:
+  talaria-db:
