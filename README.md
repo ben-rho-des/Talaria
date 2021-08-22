@@ -1,4 +1,4 @@
-🐱‍🏍 Talaria
+Talaria
 
 ## dev
 ```
@@ -37,5 +37,6 @@ docker stop $(docker ps -a -q)
 
 ## todos
 
-add better logging
+add better logs
 tests
+postman collections
